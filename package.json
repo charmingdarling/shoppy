@@ -1,0 +1,29 @@
+{
+  "name": "shoppy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charmingdarling/shoppy.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "coding",
+    "bootcamp"
+  ],
+  "author": "Kim Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charmingdarling/shoppy/issues"
+  },
+  "homepage": "https://github.com/charmingdarling/shoppy#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "uuid": "^9.0.1"
+  }
+}
