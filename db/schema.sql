@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS shoppy_db;
+
+CREATE DATABASE shoppy_db;
