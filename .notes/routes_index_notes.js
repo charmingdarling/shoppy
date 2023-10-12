@@ -11,6 +11,25 @@ const router = require("express").Router();
 
 // Setting up an instance of an Express router. In Express.js, routers are used to create modular, mountable route handlers. They allow you to group related routes and handlers together, making your code more organized and maintainable.
 
+// What is a route handler? A route handler is a function in an Express.js application that gets executed when a specific route is accessed. In an Express application, you define routes to map specific HTTP methods (like GET, POST, etc.) and paths to corresponding functions or middleware. These functions or middleware are the route handlers.
+
+// Example:
+
+const express = require("express");
+const app = express();
+
+// Define a route with a route handler
+app.get("/example", (req, res) => {
+  res.send("This is the route handler for /example");
+});
+
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+//
+
 // **`require('express').Router()`**:
 // - This line imports the `Router` class from the `express` module.
 // - The `Router` class is a part of Express and provides a way to create modular, mountable route handlers.
@@ -28,10 +47,12 @@ const router = require("express").Router();
 
 const router = require("express").Router();
 
+// This function is a handler
 router.get("/", (req, res) => {
   res.send("Hello, this is the root route!");
 });
 
+// This function is also a handler
 router.get("/about", (req, res) => {
   res.send("This is the about route.");
 });
@@ -129,3 +150,66 @@ app.listen(port, () => {
 // - `app.use('/api', apiRoutes);` tells Express to use the routes defined in `apiRoutes` at the path `/api`. So, accessing `/api/users` and `/api/posts` will trigger the corresponding route handlers from the "api.js" module.
 
 // This modular approach helps organize your code by breaking it into smaller, manageable pieces. Each module can handle specific functionality, making your application more maintainable and easier to understand.
+
+// * What is -> router.use("api", apiRoutes);
+
+// The line `router.use("api", apiRoutes);` is configuring an Express router to use another router (`apiRoutes`) for any routes that start with "/api". Let's break down this statement:
+
+// - **`router.use("api", apiRoutes);`**:
+//   - `router`: This refers to an instance of an Express router. The router is an isolated instance of middleware and routes.
+//   - `.use("api", apiRoutes)`: This uses the `use` method of the router to specify middleware. In this case, it's configuring the router to use `apiRoutes` as middleware.
+//   - `"api"`: This is a path prefix. It means that the middleware defined in `apiRoutes` will only be applied to routes that start with "/api".
+//   - `apiRoutes`: This is assumed to be another router or middleware that will be used for routes starting with "/api".
+
+// **Explanation**:
+
+// - **Path Prefix ("/api"):** The path prefix specifies that this middleware (i.e., the `apiRoutes`) will only be applied to routes that match the specified prefix. For example, if a route is "/api/users", it will match this middleware, but if it's just "/users", it won't.
+
+// - **Use of Another Router (`apiRoutes`):** The second argument, `apiRoutes`, is expected to be another router instance. This means that if a request matches the path prefix ("/api"), the router will use the routes and middleware defined in `apiRoutes` to handle that request.
+
+// **Example**:
+
+// Assuming you have an `apiRoutes` router defined as follows:
+
+// apiRoutes.js
+
+const express = require("express");
+const router = express.Router();
+
+router.get("/users", (req, res) => {
+  res.json({ message: "API endpoint for users" });
+});
+
+router.get("/posts", (req, res) => {
+  res.json({ message: "API endpoint for posts" });
+});
+
+module.exports = router;
+
+// Then, in another file (let's call it "app.js" for simplicity):
+
+// app.js
+
+const express = require("express");
+const app = express();
+
+// Import the apiRoutes module
+const apiRoutes = require("./apiRoutes");
+
+// Use the imported routes at the path "/api"
+app.use("/api", apiRoutes);
+
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+// In this example:
+
+// - The `app.use('/api', apiRoutes);` line in "app.js" tells Express to use the routes defined in `apiRoutes` whenever a request is made to a path starting with "/api". So, requests to "/api/users" and "/api/posts" will be handled by the corresponding route handlers in the `apiRoutes` module.
+
+// * End
+
+// ---------------------------------------------------------- //
+// ---------------------------------------------------------- //
+// ---------------------------------------------------------- //
