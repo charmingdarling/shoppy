@@ -8,7 +8,29 @@ class Category extends Model {}
 
 Category.init(
   {
-    // define columns
+    // // Define fields/columns on model
+    // // An `id` is automatically created by Sequelize, though best practice would be to define the primary key ourselves
+    // {
+    //   title: {
+    //     type: DataTypes.STRING,
+    //   },
+    //   author: {
+    //     type: DataTypes.STRING,
+    //   },
+    //   isbn: {
+    //     type: DataTypes.STRING,
+    //   },
+    //   pages: {
+    //     type: DataTypes.INTEGER,
+    //   },
+    //   edition: {
+    //     type: DataTypes.INTEGER,
+    //   },
+    //   // Will become `is_paperback` in table due to `underscored` flag
+    //   isPaperback: {
+    //     type: DataTypes.BOOLEAN,
+    //   },
+    // },
   },
   {
     sequelize,
