@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require("sequelize");
+import { Model, DataTypes } from "sequelize";
 
 // Extends: functionality of the parent
 // Example: (class Car extends Vehicle {})
@@ -20,7 +20,7 @@ Category.init(
   }
 );
 
-module.exports = Category;
+export default Category;
 
 // const { Model, DataTypes } = require("sequelize");
 // const sequelize = require("../config/connection");

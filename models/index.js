@@ -1,8 +1,8 @@
 // Import your models from other files
 const Category = require("./Product");
 const Product = require("./Product");
-const ProductTag = require("./Tag");
-const Tag = require(".ProductTag");
+const ProductTag = require("./ProductTag");
+const Tag = require(".Tag");
 
 // Products belongsTo Category // RELATIONSHIPS IDed HERE
 
