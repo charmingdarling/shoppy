@@ -3,10 +3,9 @@ const apiRoutes = require("./api");
 router.use("api", apiRoutes);
 module.exports = router;
 
-// The code you've provided is setting up an instance of an Express router. In Express.js, routers are used to create modular, mountable route handlers. They allow you to group related routes and handlers together, making your code more organized and maintainable.
-
-// Let's break down the code:
 const router = require("express").Router();
+
+// Setting up an instance of an Express router. In Express.js, routers are used to create modular, mountable route handlers. They allow you to group related routes and handlers together, making your code more organized and maintainable.
 
 // **`require('express').Router()`**:
 // - This line imports the `Router` class from the `express` module.
