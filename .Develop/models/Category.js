@@ -1,7 +1,9 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize");
 
-const sequelize = require('../config/connection.js');
+const sequelize = require("../config/connection.js");
 
+// Extends: functionality of the parent (class Car extends Vehicle)
+// Model is inherited in Sequelize for functioning
 class Category extends Model {}
 
 Category.init(
@@ -13,7 +15,7 @@ Category.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'category',
+    modelName: "category",
   }
 );
 
