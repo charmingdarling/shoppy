@@ -1,4 +1,7 @@
-import { Model, DataTypes } from "sequelize";
+const { Model, DataTypes } = require("sequelize");
+
+// Import database connection from config.js
+const sequelize = require("../config/connection.js");
 
 // Extends: functionality of the parent
 // Example: (class Car extends Vehicle {})
@@ -12,12 +15,12 @@ Category.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
     category_name: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   },
 
   {
@@ -29,46 +32,4 @@ Category.init(
   }
 );
 
-export default Category;
-
-// const { Model, DataTypes } = require("sequelize");
-// const sequelize = require("../config/connection");
-
-// // Create a new Sequelize model for books
-// class Book extends Model {}
-
-// Book.init(
-//   // Define fields/columns on model
-//   // An `id` is automatically created by Sequelize, though best practice would be to define the primary key ourselves
-//   {
-//     title: {
-//       type: DataTypes.STRING,
-//     },
-//     author: {
-//       type: DataTypes.STRING,
-//     },
-//     isbn: {
-//       type: DataTypes.STRING,
-//     },
-//     pages: {
-//       type: DataTypes.INTEGER,
-//     },
-//     edition: {
-//       type: DataTypes.INTEGER,
-//     },
-//     // Will become `is_paperback` in table due to `underscored` flag
-//     isPaperback: {
-//       type: DataTypes.BOOLEAN,
-//     },
-//   },
-//   {
-//     // Link to database connection
-//     sequelize,
-//     // Set to false to remove `created_at` and `updated_at` fields
-//     timestamps: false,
-//     underscored: true,
-//     modelName: "book",
-//   }
-// );
-
-// module.exports = Book;
+module.exports = Category;
