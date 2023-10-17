@@ -17,6 +17,10 @@ Product.init(
     product_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+      validate: {
+        len: [1, 50],
+      },
     },
     price: {
       type: DataTypes.DECIMAL(6, 2),
@@ -28,17 +32,16 @@ Product.init(
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 10,
+      defaultValue: 10, // Enter a product and don't/forget to have stock
       validate: {
         isNumeric: true,
       },
     },
     category_id: {
       type: DataTypes.INTEGER,
-      // allowNull: false,
       references: {
         model: "category",
-        key: "id",
+        key: "id", // like foreign key in that model
       },
     },
   },

@@ -20,6 +20,10 @@ Category.init(
     category_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true, // Checks if the 'category_name' is unique, prevent duplicates
+      validate: {
+        len: [1, 50],
+      },
     },
   },
 
